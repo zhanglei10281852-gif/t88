@@ -1,12 +1,12 @@
-import React from 'react';
-import { REGIONS } from '../data/bonesData';
+import React from "react";
+import { REGIONS } from "../data/bonesData";
 
 const VIEW_PRESETS = {
-  front: { name: '正面', position: [0, 0, 12], target: [0, 0, 0] },
-  back: { name: '背面', position: [0, 0, -12], target: [0, 0, 0] },
-  left: { name: '左侧', position: [-12, 0, 0], target: [0, 0, 0] },
-  right: { name: '右侧', position: [12, 0, 0], target: [0, 0, 0] },
-  top: { name: '俯视', position: [0, 12, 2], target: [0, 0, 0] },
+  front: { name: "正面", position: [0, 2, 12], target: [0, 1, 0] },
+  back: { name: "背面", position: [0, 2, -12], target: [0, 1, 0] },
+  left: { name: "左侧", position: [-12, 2, 0], target: [0, 1, 0] },
+  right: { name: "右侧", position: [12, 2, 0], target: [0, 1, 0] },
+  top: { name: "俯视", position: [0, 12, 0.1], target: [0, 0, 0] },
 };
 
 export default function ControlPanel({
@@ -38,7 +38,7 @@ export default function ControlPanel({
           ))}
         </div>
       </div>
-      
+
       <div className="control-section">
         <h4 className="control-section-title">视图控制</h4>
         <div className="toggle-controls">
@@ -50,7 +50,7 @@ export default function ControlPanel({
             />
             <span className="toggle-text">自动旋转</span>
           </label>
-          
+
           <label className="toggle-control">
             <input
               type="checkbox"
@@ -61,7 +61,7 @@ export default function ControlPanel({
           </label>
         </div>
       </div>
-      
+
       <div className="control-section">
         <h4 className="control-section-title">分解视图</h4>
         <div className="explode-control">
@@ -76,12 +76,14 @@ export default function ControlPanel({
           />
           <div className="explode-labels">
             <span>复原</span>
-            <span className="explode-value">{Math.round(explodeFactor * 100)}%</span>
+            <span className="explode-value">
+              {Math.round(explodeFactor * 100)}%
+            </span>
             <span>分解</span>
           </div>
         </div>
       </div>
-      
+
       <div className="control-section">
         <h4 className="control-section-title">显示控制</h4>
         <div className="display-controls">
@@ -93,23 +95,23 @@ export default function ControlPanel({
           </button>
         </div>
       </div>
-      
+
       <div className="control-section">
         <h4 className="control-section-title">学习模式</h4>
-        <button 
-          className={`quiz-btn ${quizActive ? 'active' : ''}`}
+        <button
+          className={`quiz-btn ${quizActive ? "active" : ""}`}
           onClick={onStartQuiz}
         >
-          {quizActive ? '退出测验' : '🎯 考考你'}
+          {quizActive ? "退出测验" : "🎯 考考你"}
         </button>
       </div>
-      
+
       <div className="control-section">
         <h4 className="control-section-title">颜色图例</h4>
         <div className="color-legend">
-          {Object.values(REGIONS).map(region => (
+          {Object.values(REGIONS).map((region) => (
             <div key={region.id} className="legend-item">
-              <div 
+              <div
                 className="legend-color"
                 style={{ backgroundColor: region.color }}
               />
